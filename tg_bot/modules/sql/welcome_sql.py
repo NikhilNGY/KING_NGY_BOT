@@ -6,11 +6,11 @@ from sqlalchemy import Column, String, Boolean, UnicodeText, Integer, BigInteger
 from tg_bot.modules.helper_funcs.msg_types import Types
 from tg_bot.modules.sql import SESSION, BASE
 
-DEFAULT_WELCOME = 'Hi, {first} WELCOME TO OUR GROUP JOIN OUR OFFICIAL CHANNEL : @NGY_CGS.'
+DEFAULT_WELCOME = 'Hi, {first} WELCOME TO OUR GROUP JOIN OUR OFFICIAL CHANNEL : @NGY_CGS 👈'
 DEFAULT_GOODBYE = '{first} He is Leaving Our Group 😂🤣😂.'
 
 DEFAULT_WELCOME_MESSAGES = [
-    "Hi, {first} WELCOME TO OUR GROUP JOIN OUR OFFICIAL CHANNEL : @NGY_CGS.",
+    "Hi, {first} WELCOME TO OUR GROUP JOIN OUR OFFICIAL CHANNEL : @NGY_CGS 👈",
 ]
 DEFAULT_GOODBYE_MESSAGES = [
     "{first} He is Leaving Our Group 😂🤣😂.",
