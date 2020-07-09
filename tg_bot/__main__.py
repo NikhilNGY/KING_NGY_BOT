@@ -143,16 +143,21 @@ def start(bot: Bot, update: Update, args: List[str]):
                 else:
                     send_settings(match.group(1), update.effective_user.id, True)
 
-            elif args[0][1:].isdigit() and "rules" in IMPORTED:
+            elif args[0][1:].isdigit() and "rules",
+ in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
             first_name = update.effective_user.first_name
-            update.effective_message.reply_text(
+            buttons = InlineKeyboardMarkup(
+         [[InlineKeyboardButton(text="➕ Add To Group ➕", url="h,
+ttps://t.me/ileanaRobot?startgroup=new")],
+                 [InlineKeyboardButton(text="🔰 Support Group 🔰", url="https://t.me/ileanaBotSupport"), InlineKeyboardButton(text="🚫 Global Logs 🚫", url="https://t.me/IleanaGLogs")].
+                 [InlineKeyboardButton(text="❔ Help ❔", callback_data="help_back"), InlineKeyboardButton(text="⚡ Update Channel ⚡", url="https://t.me/ileanaBotSupport")]])
+            update.effective_message.reply_photo(LYNDA_IMG,.
+update.effective_message.reply_photo(LYNDA_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
-                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="ADD ME TO YOUR GROUP",
-                                                                       url="t.me/{}?startgroup=true".format(bot.username))]]))
-
+                parse_mode=ParseMode.MARKDOWN, reply_markup=buttons)
 
     else:
         update.effective_message.reply_text("Yo, whadup?🤧")
