@@ -36,9 +36,9 @@ HOI    {}, MY NAME IS {} !
 
 I AM A GROUP MANAGER BOT MAINTAINED BY 
 
-[THIS LEGEND](tg://user?id=1171354752)
+[😎 THIS LEGEND 😎](tg://user?id=1171354752)
 
-[Support Channel](https://t.me/NGY_CGS)
+[Support Channel](https://t.me/NGY_BOTS)
 
 HIT HELP FOR COMMANDS /help
 
@@ -49,10 +49,10 @@ HELP_STRINGS = """
 Hello! my name *{}*.
 
 *Main* commands available:
- - /start: start the bot
- - /help: PM's you this message.
- - /help <module name>: PM's you info about that module.
- - /settings:
+ - ✘start: start the bot
+ - ✘help: PM's you this message.
+ - ✘help <module name>: PM's you info about that module.
+ - ✘settings:
    - in PM: will send you your settings for all supported modules.
    - in a group: will redirect you to pm, with all that chat's settings.
 
@@ -152,8 +152,8 @@ def start(bot: Bot, update: Update, args: List[str]):
             buttons = InlineKeyboardMarkup(
          [[InlineKeyboardButton(text="➕ Add To Group ➕", url="h,
 ttps://t.me/ileanaRobot?startgroup=new")],
-                 [InlineKeyboardButton(text="🔰 Support Group 🔰", url="https://t.me/ileanaBotSupport"), InlineKeyboardButton(text="🚫 Global Logs 🚫", url="https://t.me/IleanaGLogs")].
-                 [InlineKeyboardButton(text="❔ Help ❔", callback_data="help_back"), InlineKeyboardButton(text="⚡ Update Channel ⚡", url="https://t.me/ileanaBotSupport")]])
+                 [InlineKeyboardButton(text="⚜️ Support Group ⚜️", url="https://t.me/NGY_BOTS"), InlineKeyboardButton(text="🚫 Global Logs 🚫", url="https://t.me/NGY_BOTS")].
+                 [InlineKeyboardButton(text="❔ Help ❔", callback_data="help_back"), InlineKeyboardButton(text="🔖 Update Channel 🔖", url="https://t.me/NGY_BOTS")]])
             update.effective_message.reply_photo(LYNDA_IMG,.
 update.effective_message.reply_photo(LYNDA_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
