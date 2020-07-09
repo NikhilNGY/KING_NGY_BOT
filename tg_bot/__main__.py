@@ -143,13 +143,12 @@ def start(bot: Bot, update: Update, args: List[str]):
                 else:
                     send_settings(match.group(1), update.effective_user.id, True)
 
-            elif args[0][1:].isdigit() and "rules",
  
         else:
             first_name = update.effective_user.first_name
             buttons = InlineKeyboardMarkup(
          [[InlineKeyboardButton(text="➕ Add To Group ➕", url="h,
-ttps://t.me/ileanaRobot?startgroup=new")],
+ttps://t.me/KING_NGY_BOT?startgroup=new")],
                  [InlineKeyboardButton(text="⚜️ Support Group ⚜️", url="https://t.me/NGY_BOTS"), InlineKeyboardButton(text="🚫 Global Logs 🚫", url="https://t.me/NGY_BOTS")].
                  [InlineKeyboardButton(text="❔ Help ❔", callback_data="help_back"), InlineKeyboardButton(text="🔖 Update Channel 🔖", url="https://t.me/NGY_BOTS")]])
             update.effective_message.reply_photo(LYNDA_IMG,.
