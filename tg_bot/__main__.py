@@ -138,8 +138,8 @@ def start(bot: Bot, update: Update, args: List[str]):
         else:
             first_name = update.effective_user.first_name
             buttons = InlineKeyboardMarkup(
-         [[InlineKeyboardButton(text="Add To Group ➕", url="https://t.me/meikobot?startgroup=new")],
-         [InlineKeyboardButton(text="Support Group 👥", url="https://t.me/meikoSupport")],
+         [[InlineKeyboardButton(text="Add To Group ➕", url="https://t.me/KING_NGY_BOT?startgroup=new")],
+         [InlineKeyboardButton(text="📝 UPDATES CHANNEL", url="https://t.me/NGY_BOTS")],
          [InlineKeyboardButton(text="Help And Commands ❔", callback_data="help_back")]])
             update.effective_message.reply_photo(LYNDA_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
