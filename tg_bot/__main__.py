@@ -32,7 +32,7 @@ HIT HELP FOR COMMANDS /help
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a part of ✘
+I'm a part of ✘ NIKHIL ✘
 Have a look at the following for an idea of some of 
 the things I can help you with.
 *Main* commands available:
@@ -48,10 +48,8 @@ the things I can help you with.
 And the following:
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-LYNDA_IMG = "https://telegra.ph/file/58f0dd7c115b921ccb068.jpg"
+LYNDA_IMG = "https://telegra.ph/file/e4a66645290b012ec1730.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
-Meiko Is Hosted In Heroku ! So No need To Donate."""
 
 IMPORTED = {}
 MIGRATEABLE = []
