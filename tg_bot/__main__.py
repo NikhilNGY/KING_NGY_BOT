@@ -17,22 +17,22 @@ from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
-Hello {} !
-My name is {} !
-I am an group management bot with a lot of Special Features.
-*Please Click* `Help` *Button For Assistance And Help Regarding Special Modules*
-I Am Fun And Easy To Use and Setup !
-*You can find the list of available commands with* `Help` Module.
-==========================
-✗ [Support Channel](https://t.me/MeikoSupport)
-==========================
-*Maintained by This By This* [✗ God ✗](t.me/starkxD)
+HOI    {}, MY NAME IS {} !
+
+I AM A GROUP MANAGER BOT
+
+MAINTAINED BY 
+[THIS LEGEND](tg://user?id=1171354752)
+
+[Support Channel](https://t.me/NGY_CGS)
+
+HIT HELP FOR COMMANDS /help
 
 """
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a part of ✘ ＳＴＡＲＫＧＡＮＧ ✘
+I'm a part of ✘
 Have a look at the following for an idea of some of 
 the things I can help you with.
 *Main* commands available:
