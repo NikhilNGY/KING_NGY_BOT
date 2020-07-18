@@ -138,9 +138,9 @@ def start(bot: Bot, update: Update, args: List[str]):
         else:
             first_name = update.effective_user.first_name
             buttons = InlineKeyboardMarkup(
-         [[InlineKeyboardButton(text="⚜️ Add To Group ⚜️", url="https://t.me/KING_NGY_BOT?startgroup=new")],
+         [[InlineKeyboardButton(text="⚜️ Add To Group ⚜️", url="https://t.me/KING_NGY_BOT?startgroup=new")]
           [InlineKeyboardButton(text="🛡️ CREATOR 🛡️", url="https://t.me/NGY_BOT")],
-         [InlineKeyboardButton(text="📢 CHANNEL 📢", url="https://t.me/NGY_BOTS")],
+         [InlineKeyboardButton(text="📢 CHANNEL 📢", url="https://t.me/NGY_BOTS")]
          [InlineKeyboardButton(text="💻 HELP 💻", callback_data="help_back")]])
             update.effective_message.reply_photo(LYNDA_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
