@@ -1,64 +1,57 @@
 import importlib
 import re
-import json
-import requests
 from typing import Optional, List
-from parsel import Selector
-from urllib.request import urlopen
 
-from telegram import Message, Chat, Update, Bot, User
-from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
+from telegram import Bot, Update, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.error import Unauthorized, BadRequest, TimedOut, NetworkError, ChatMigrated, TelegramError
 from telegram.ext import CommandHandler, MessageHandler, CallbackQueryHandler, Filters
 from telegram.ext.dispatcher import run_async, DispatcherHandlerStop
 from telegram.utils.helpers import escape_markdown
 
-from tg_bot import dispatcher, updater, TOKEN, WEBHOOK, OWNER_ID, CERT_PATH, PORT, URL, LOGGER, \
+from tg_bot import dispatcher, updater, TOKEN, WEBHOOK, OWNER_ID, DONATION_LINK, CERT_PATH, PORT, URL, LOGGER, \
     ALLOW_EXCL
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
 from tg_bot.modules import ALL_MODULES
-from tg_bot import dispatcher
-from tg_bot.modules.disable import DisableAbleCommandHandler
 from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 
-
-
 PM_START_TEXT = """
-
-
-
-HOI    {}, MY NAME IS {} !
-
-I AM A GROUP MANAGER BOT MAINTAINED BY 
-
-[THIS LEGEND](tg://user?id=1171354752)
-
-[Support Channel](https://t.me/NGY_CGS)
-
-HIT HELP FOR COMMANDS /help
+Hello {} !
+My name is {} !
+I am an group management bot with a lot of Special Features.
+*Please Click* `Help` *Button For Assistance And Help Regarding Special Modules*
+I Am Fun And Easy To Use and Setup !
+*You can find the list of available commands with* `Help` Module.
+==========================
+✗ [Support Channel](https://t.me/MeikoSupport)
+==========================
+*Maintained by This By This* [✗ God ✗](t.me/starkxD)
 
 """
 
 HELP_STRINGS = """
-
-Hello! my name *{}*.
-
+Hey there! My name is *{}*.
+I'm a part of ✘ ＳＴＡＲＫＧＡＮＧ ✘
+Have a look at the following for an idea of some of 
+the things I can help you with.
 *Main* commands available:
- - /start: start the bot
- - /help: PM's you this message.
- - /help <module name>: PM's you info about that module.
- - /settings:
-   - in PM: will send you your settings for all supported modules.
-   - in a group: will redirect you to pm, with all that chat's settings.
-
+ ✘ /start: start the bot
+ ✘ /help: PM's you this message.
+ ✘ /help <module name>: PM's you info about that module.
+ ✘ /donate: information about how to donate!
+ ✘ /settings:
+   ✓ in PM: will send you your settings for all supported modules.
+   ✓ in a group: will redirect you to pm, with all that chat's settings.
 
 {}
 And the following:
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-LYNDA_IMG = "https://telegra.ph/file/e4a66645290b012ec1730.jpg"
+LYNDA_IMG = "https://telegra.ph/file/58f0dd7c115b921ccb068.jpg"
+
+DONATE_STRING = """Heya, glad to hear you want to donate!
+Meiko Is Hosted In Heroku ! So No need To Donate."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -130,8 +123,8 @@ def start(bot: Bot, update: Update, args: List[str]):
         if len(args) >= 1:
             if args[0].lower() == "help":
                 send_help(update.effective_chat.id, HELP_STRINGS)
-            elif args[0].lower() == "disasters":
-                IMPORTED["disasters"].send_disasters(update)
+            elif args[0].lower() == "Nations":
+                IMPORTED["Nations"].send_Nations(update)
             elif args[0].lower().startswith("stngs_"):
                 match = re.match("stngs_(.*)", args[0].lower())
                 chat = dispatcher.bot.getChat(match.group(1))
@@ -146,23 +139,15 @@ def start(bot: Bot, update: Update, args: List[str]):
 
         else:
             first_name = update.effective_user.first_name
-            update.effective_message.reply_text(
+            buttons = InlineKeyboardMarkup(
+         [[InlineKeyboardButton(text="Add To Group ➕", url="https://t.me/meikobot?startgroup=new")],
+         [InlineKeyboardButton(text="Support Group 👥", url="https://t.me/meikoSupport")],
+         [InlineKeyboardButton(text="Help And Commands ❔", callback_data="help_back")]])
+            update.effective_message.reply_photo(LYNDA_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
-                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="ADD ME TO YOUR GROUP",
-                                                                       url="t.me/{}?startgroup=true".format(bot.username))]]))
-
-
+                parse_mode=ParseMode.MARKDOWN, reply_markup=buttons)
     else:
-        update.effective_message.reply_text("Yo, whadup?🤧")
-
-
-def send_start(bot, update):
-    #Try to remove old message
-    try:
-        query = update.callback_query
-        query.message.delete()
-    except:
-        Pass
+        update.effective_message.reply_text("Hey, Wassup?")
 
 
 # for test purposes
@@ -267,72 +252,6 @@ def get_help(bot: Bot, update: Update):
 
     else:
         send_help(chat.id, HELP_STRINGS)
-
-def imdb_searchdata(bot: Bot, update: Update):
-    query_raw = update.callback_query
-    query = query_raw.data.split('$')
-    print(query)
-    if query[1] != query_raw.from_user.username:
-        return
-    title = ''
-    rating = ''
-    date = ''
-    synopsis = ''
-    url_sel = 'https://www.imdb.com/title/%s/' % (query[0])
-    text_sel = requests.get(url_sel).text
-    selector_global = Selector(text = text_sel)
-    title = selector_global.xpath('//div[@class="title_wrapper"]/h1/text()').get().strip()
-    try:
-        rating = selector_global.xpath('//div[@class="ratingValue"]/strong/span/text()').get().strip()
-    except:
-        rating = '-'
-    try:
-        date = '(' + selector_global.xpath('//div[@class="title_wrapper"]/h1/span/a/text()').getall()[-1].strip() + ')'
-    except:
-        date = selector_global.xpath('//div[@class="subtext"]/a/text()').getall()[-1].strip()
-    try:
-        synopsis_list = selector_global.xpath('//div[@class="summary_text"]/text()').getall()
-        synopsis = re.sub(' +',' ', re.sub(r'\([^)]*\)', '', ''.join(sentence.strip() for sentence in synopsis_list)))
-    except:
-        synopsis = '_No synopsis available._'
-    movie_data = '*%s*, _%s_\n★ *%s*\n\n%s' % (title, date, rating, synopsis)
-    query_raw.edit_message_text(
-        movie_data, 
-        parse_mode=ParseMode.MARKDOWN
-    )
-
-@run_async
-def imdb(bot: Bot, update: Update, args):
-    message = update.effective_message
-    query = ''.join([arg + '_' for arg in args]).lower()
-    if not query:
-        bot.send_message(
-            message.chat.id,
-            'You need to specify a movie/show name!'
-        )
-        return
-    url_suggs = 'https://v2.sg.media-imdb.com/suggests/%s/%s.json' % (query[0], query)
-    json_url = urlopen(url_suggs)
-    suggs_raw = ''
-    for line in json_url:
-        suggs_raw = line
-    skip_chars = 6 + len(query)
-    suggs_dict = json.loads(suggs_raw[skip_chars:][:-1])
-    if suggs_dict:
-        button_list = [[
-                InlineKeyboardButton(
-                    text = str(sugg['l'] + ' (' + str(sugg['y']) + ')'), 
-                    callback_data = str(sugg['id']) + '$' + str(message.from_user.username)
-                )] for sugg in suggs_dict['d'] if 'y' in sugg
-        ]
-        reply_markup = InlineKeyboardMarkup(button_list)
-        bot.send_message(
-            message.chat.id,
-            'Which one? ',
-            reply_markup = reply_markup
-        )
-    else:
-        pass
 
 
 def send_settings(chat_id, user_id, user=False):
@@ -449,6 +368,27 @@ def get_settings(bot: Bot, update: Update):
         send_settings(chat.id, user.id, True)
 
 
+@run_async
+def donate(bot: Bot, update: Update):
+    user = update.effective_message.from_user
+    chat = update.effective_chat  # type: Optional[Chat]
+
+    if chat.type == "private":
+        update.effective_message.reply_text(DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+
+        if OWNER_ID != 254318997 and DONATION_LINK:
+            update.effective_message.reply_text("You can also donate to the person currently running me "
+                                                "[here]({})".format(DONATION_LINK),
+                                                parse_mode=ParseMode.MARKDOWN)
+
+    else:
+        try:
+            bot.send_message(user.id, DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+
+            update.effective_message.reply_text("I've PM'ed you about donating to my creator!")
+        except Unauthorized:
+            update.effective_message.reply_text("Contact me in PM first to get donation information.")
+
 
 def migrate_chats(bot: Bot, update: Update):
     msg = update.effective_message  # type: Optional[Message]
@@ -473,18 +413,13 @@ def main():
     test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start, pass_args=True)
 
-    start_callback_handler = CallbackQueryHandler(send_start, pattern=r"bot_start")
-    
-
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
-    
-    IMDB_HANDLER = CommandHandler("imdb", imdb, pass_args=True)
-    IMDB_SEARCHDATA_HANDLER = CallbackQueryHandler(imdb_searchdata)
+
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-   
+    donate_handler = CommandHandler("donate", donate)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
     # dispatcher.add_handler(test_handler)
@@ -494,9 +429,8 @@ def main():
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
     dispatcher.add_handler(migrate_handler)
-    dispatcher.add_handler(start_callback_handler)
-    dispatcher.add_handler(IMDB_HANDLER)
-    dispatcher.add_handler(IMDB_SEARCHDATA_HANDLER)
+    dispatcher.add_handler(donate_handler)
+
     # dispatcher.add_error_handler(error_callback)
 
     if WEBHOOK:
