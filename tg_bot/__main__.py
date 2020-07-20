@@ -48,7 +48,7 @@ the things I can help you with.
 And the following:
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-LYNDA_IMG = "https://telegra.ph/file/58f0dd7c115b921ccb068.jpg"
+LYNDA_IMG = "https://telegra.ph/file/9657d695330181cb2a327.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 Meiko Is Hosted In Heroku ! So No need To Donate."""
@@ -141,8 +141,8 @@ def start(bot: Bot, update: Update, args: List[str]):
             first_name = update.effective_user.first_name
             buttons = InlineKeyboardMarkup(
          [[InlineKeyboardButton(text="⚜️ Add ⚜️", url="https://t.me/KING_NGY_BOT?startgroup=new")],[InlineKeyboardButton(text="🛡️ CREATOR 🛡️", url="https://t.me/NGY_BOT")],
-         [InlineKeyboardButton(text="📣 CHANNEL 📣", url="https://t.me/NGY_BOTS")],[InlineKeyboardButton(text="💻 HELP 💻", callback_data="help_back")]])
-        
+         [InlineKeyboardButton(text="📣 CHANNEL 📣", url="https://t.me/NGY_BOTS")],
+        [InlineKeyboardButton(text="💻 HELP 💻", callback_data="help_back")]])
             update.effective_message.reply_photo(LYNDA_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
                 parse_mode=ParseMode.MARKDOWN, reply_markup=buttons)
