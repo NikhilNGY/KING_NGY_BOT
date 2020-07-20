@@ -30,11 +30,18 @@ from alluka.modules.connection import connect_button
 
 
 PM_START_TEXT = """
-_Hello_ *{}*
-_My name is_ *{}*\n_A Powerful Telegram ProBot to Manage Your Groups,feel free to add to your groups!!_
-_Maintained by_ [⚡This Legend⚡](tg://user?id={})
-"""
 
+
+HI    {}, MY NAME IS {} !
+
+I AM A GROUP MANAGER BOT MAINTAINED BY 
+
+[THIS LEGEND](tg://user?id=1171354752)
+
+[Support Channel](https://t.me/NGY_BOTS)
+
+HIT HELP FOR COMMANDS /help
+"""
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
