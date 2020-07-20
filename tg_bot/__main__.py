@@ -24,15 +24,15 @@ I am an group management bot with a lot of Special Features.
 I Am Fun And Easy To Use and Setup !
 *You can find the list of available commands with* `Help` Module.
 ==========================
-✗ [Support Channel](https://t.me/MeikoSupport)
+✗ SUPPORT CHANNEL : [CLICK HERE](https://t.me/NGY_BOTS)
 ==========================
-*Maintained by This By This* [✗ God ✗](t.me/starkxD)
+*Maintained by This By This* [✗ LEGEND ✗](t.me/NGY_BOT)
 
 """
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a part of ✘ ＳＴＡＲＫＧＡＮＧ ✘
+I'm a part of ✘ @NGY_BOT ✘
 Have a look at the following for an idea of some of 
 the things I can help you with.
 *Main* commands available:
@@ -140,9 +140,9 @@ def start(bot: Bot, update: Update, args: List[str]):
         else:
             first_name = update.effective_user.first_name
             buttons = InlineKeyboardMarkup(
-         [[InlineKeyboardButton(text="Add To Group ➕", url="https://t.me/meikobot?startgroup=new")],
-         [InlineKeyboardButton(text="Support Group 👥", url="https://t.me/meikoSupport")],
-         [InlineKeyboardButton(text="Help And Commands ❔", callback_data="help_back")]])
+         [[InlineKeyboardButton(text="⚜️ Add ⚜️", url="https://t.me/KING_NGY_BOT?startgroup=new")],[InlineKeyboardButton(text="🛡️ CREATOR 🛡️", url="https://t.me/NGY_BOT")],
+         [InlineKeyboardButton(text="📣 CHANNEL 📣", url="https://t.me/NGY_BOTS")],[InlineKeyboardButton(text="💻 HELP 💻", callback_data="help_back")]])
+        
             update.effective_message.reply_photo(LYNDA_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
                 parse_mode=ParseMode.MARKDOWN, reply_markup=buttons)
