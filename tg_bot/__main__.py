@@ -34,11 +34,11 @@ PM_START_TEXT = """
 
 HI    {}, MY NAME IS {} !
 
-I AM A GROUP MANAGER BOT MAINTAINED BY 
+I AM A GROUP MANAGER BOT.
 
-[THIS LEGEND](tg://user?id=1171354752)
+MAINTANCED BY :~: [😎 N I K H I L 😎](tg://user?id=1171354752)
 
-[Support Channel](https://t.me/NGY_BOTS)
+SUPPORT CHANNEL :~: [CLICK HERE](https://t.me/NGY_BOTS)
 
 HIT HELP FOR COMMANDS /help
 """
@@ -187,8 +187,8 @@ def send_start(bot, update):
     first_name = update.effective_user.first_name 
     text = PM_START_TEXT
 
-    keyboard = [[InlineKeyboardButton(text="Help",callback_data="help_back"),InlineKeyboardButton(text="🛡Creator🛡",url="https://t.me/NikhilNGY")]]
-    keyboard += [[InlineKeyboardButton(text="🌐Connect Group", callback_data="main_connect"),InlineKeyboardButton(text="⚜️Add Me⚜️",url="t.me/{}?startgroup=true".format(bot.username))]]
+    keyboard = [[InlineKeyboardButton(text="💻 Help 💻",callback_data="help_back"),InlineKeyboardButton(text="🛡Creator🛡",url="https://t.me/NikhilNGY")]]
+    keyboard += [[InlineKeyboardButton(text="📣 CHANNEL 📣", url="https://t.me/NGY_BOTS"),InlineKeyboardButton(text="⚜️Add Me⚜️",url="t.me/{}?startgroup=true".format(bot.username))]]
 
     update.effective_message.reply_photo(img, PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID), 
                                          reply_markup=InlineKeyboardMarkup(keyboard), disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
