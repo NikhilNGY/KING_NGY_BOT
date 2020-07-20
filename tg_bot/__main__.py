@@ -54,16 +54,7 @@ And the following:
 
 
 
-VERSION = "5.5.2"
-
-def vercheck() -> str:
-    return str(VERSION)
-
-
-SOURCE_STRING = """
-⚡I'm built in python3, using the python-telegram-bot library, and am fully opensource - you can find what makes me tick [here](https://github.com/DONOFTELEGRAM/AndreaProBot)
-⚡You Can Clone Me [Here](https://heroku.com/deploy?template=https://github.com/NikhilNGY/KING_NGY_BOT)
-"""
+LYNDA_IMG = "https://telegra.ph/file/e4a66645290b012ec1730.jpg"
 
 
 IMPORTED = {}
@@ -79,11 +70,7 @@ USER_SETTINGS = {}
 
 GDPR = []
 
-START_IMG = os.environ.get('START_IMG', None)
-if START_IMG is None:
-    img = "https://telegra.ph/file/e4a66645290b012ec1730.jpg"
-else:
-  img = START_IMG    
+
     
 for module_name in ALL_MODULES:
     imported_module = importlib.import_module("alluka.modules." + module_name)
