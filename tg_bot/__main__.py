@@ -26,24 +26,19 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 
 PM_START_TEXT = """
-
-
-
-
 HI    {}, MY NAME IS {} !
 
-I AM A GROUP MANAGER BOT MAINTAINED BY 
+I AM A GROUP MANAGER BOT.
 
-[THIS LEGEND](tg://user?id=1171354752).
+MAINTANCED BY :~: [😎 N I K H I L 😎](tg://user?id=1171354752)
 
-HIT HELP FOR COMMANDS  /help
+SUPPORT CHANNEL :~: [CLICK HERE](https://t.me/NGY_BOTS)
 
-I AM COMPLETELY OPEN SOURCE
+HIT HELP FOR COMMANDS /help
 
-MY SOURCE CODE IS AVAILABLE TO YOU
 
-[HERE](https://telegra.ph/file/83739a465ea442a956fd3.jpg)
 
+ 
 """
 
 HELP_STRINGS = """
