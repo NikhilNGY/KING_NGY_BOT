@@ -58,6 +58,7 @@ Hello! my name *{}*.
 And the following:
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
+LYNDA_IMG = "https://telegra.ph/file/e4a66645290b012ec1730.jpg"
 
 IMPORTED = {}
 MIGRATEABLE = []
