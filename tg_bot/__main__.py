@@ -30,10 +30,6 @@ PM_START_TEXT = """
 
 Sorry.. This Bot Can Only Be Used in @MOVIERG_NGY Group!.
 
-MAINTANCED BY :~: [😎 N I K H I L 😎](tg://user?id=1171354752)
-
-SUPPORT CHANNEL :~: [CLICK HERE](https://t.me/NGY_BOTS)
-
 
 
 
@@ -148,8 +144,8 @@ def start(bot: Bot, update: Update, args: List[str]):
             first_name = update.effective_user.first_name
             update.effective_message.reply_text(
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
-                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="SUPPORT CHANNEL",
-                                                                       url="t.me/NGY_CGS".format(bot.username))]]))
+                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="SUPPORT GROUP",
+                                                                       url="t.me/MOVIERG_NGY".format(bot.username))]]))
 
 
     else:
