@@ -26,15 +26,7 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 
 PM_START_TEXT = """
-
-
 Sorry.. This Bot Can Only Be Used in @MOVIERG_NGY Group!.
-
-
-
-
-
- 
 """
 
 HELP_STRINGS = """
