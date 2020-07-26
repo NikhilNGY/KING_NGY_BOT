@@ -26,15 +26,15 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 
 PM_START_TEXT = """
-HI    {}, MY NAME IS {} !
 
-I AM A GROUP MANAGER BOT.
 
-MAINTANCED BY :~: [😎 N I K H I L 😎](tg://user?id=1171354752)
+Sorry.. This Bot Can Only Be Used in @MOVIERG_NGY Group!.
 
-SUPPORT CHANNEL :~: [CLICK HERE](https://t.me/NGY_BOTS)
+* MAINTANCED BY :~: [😎 N I K H I L 😎](tg://user?id=1171354752)
 
-HIT HELP FOR COMMANDS /help
+* SUPPORT CHANNEL :~: [CLICK HERE](https://t.me/NGY_BOTS)
+
+
 
 
 
